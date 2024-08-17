@@ -1,0 +1,25 @@
+[project]
+name = "canvas-api-project"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Jason Hemann", email = "jason.hemann@gmail.com"},
+]
+dependencies = [
+    "requests>=2.32.3",
+    "canvasapi>=3.2.0",
+    "logging>=0.4.9.6",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+    "hypothesis>=6.111.1",
+]
