@@ -4,6 +4,28 @@ Designing a set of scripts to automate interactions with Canvas, so
 that I can do things over the course of a semester without having to
 worry too much about the point-click-point-click of it.
 
+## Quick start
+
+To get going
+
+```
+$ eval $(pdm venv activate in-project)
+```
+
+## Dependencies
+
+Add new dependencies for development to Group 'test'
+
+```
+pdm add -dG test foo
+```
+
+List dependencies and their sub-dependency relationships
+
+```
+pdm list --tree
+```
+
 ## API Documentation/interaction
 
 - [Fantastic resource for getting started](getting-started)

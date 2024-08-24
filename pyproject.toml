@@ -9,6 +9,7 @@ dependencies = [
     "requests>=2.32.3",
     "canvasapi>=3.2.0",
     "logging>=0.4.9.6",
+    "pyyaml>=6.0.2",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
@@ -22,4 +23,7 @@ distribution = false
 test = [
     "pytest>=8.3.2",
     "hypothesis>=6.111.1",
+]
+dev = [
+    "pytest-mock>=3.14.0",
 ]
