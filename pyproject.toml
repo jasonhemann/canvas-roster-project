@@ -10,6 +10,9 @@ dependencies = [
     "canvasapi>=3.2.0",
     "logging>=0.4.9.6",
     "pyyaml>=6.0.2",
+    "Pillow>=10.4.0",
+    "reportlab>=4.2.5",
+    "argparse>=1.4.0",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
