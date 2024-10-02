@@ -1,6 +1,7 @@
 import os
 import requests
 import shutil
+import argparse
 from canvasapi import Canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
@@ -8,14 +9,6 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
 from reportlab.lib.styles import getSampleStyleSheet
 from PIL import Image as PilImage
 import tempfile
-
-# Canvas API setup
-COURSE_ID = 33973
-DOMAIN = "https://setonhall.instructure.com"
-API_KEY = os.environ.get("CANVAS_API_KEY", "NONE")
-
-canvas = Canvas(DOMAIN, API_KEY)
-course = canvas.get_course(COURSE_ID)
 
 # Function to download an image
 def download_image(url, filename):
@@ -78,6 +71,18 @@ def create_photo_roster(students, pdf_file_path):
 # Create a temporary directory for images
 temp_image_dir = tempfile.mkdtemp()
 
+# Argument parser for taking the course ID as input
+parser = argparse.ArgumentParser(description='Generate a photo roster for a Canvas course.')
+parser.add_argument('course_id', type=int, help='The course ID for the Canvas course')
+args = parser.parse_args()
+
+# Canvas API setup
+DOMAIN = "https://setonhall.instructure.com"
+API_KEY = os.environ.get("CANVAS_API_KEY", "NONE")
+
+canvas = Canvas(DOMAIN, API_KEY)
+course = canvas.get_course(args.course_id)
+
 try:
     # Fetch students and their data (handle pagination)
     users = course.get_users()
@@ -93,7 +98,7 @@ try:
         })
 
     # Create the PDF roster
-    create_photo_roster(students, "photo_roster.pdf")
+    create_photo_roster(students, f"photo_roster_{args.course_id}.pdf")
 
 finally:
     # Clean up temp images
