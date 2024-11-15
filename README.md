@@ -1,18 +1,26 @@
 # canvas-api-project
 
-Designing a set of scripts to automate interactions with Canvas, so
-that I can do things over the course of a semester without having to
-worry too much about the point-click-point-click of it.
+Generate a class photo roster PDF from a class's photos on Canvas.
+
+## Requirements 
+
+1. python3 >= 3.13
+2. pdm
 
 ## Quick start
-
-To get going
 
 ```
 $ eval $(pdm venv activate in-project)
 ```
 
-## Dependencies
+to activate the project environment.
+
+
+
+
+## Development
+
+### Dependencies
 
 Add new dependencies for development to Group 'test'
 
@@ -26,7 +34,7 @@ List dependencies and their sub-dependency relationships
 pdm list --tree
 ```
 
-## API Documentation/interaction
+### API Documentation/interaction
 
 - [Fantastic resource for getting started](getting-started)
 
