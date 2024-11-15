@@ -1,10 +1,8 @@
 import requests
-import
 # Right now ignore _____ here, IDE doesn't know about local dependencies/python version
 
 # CONFIG
 # Your unique access code can be gotten from Canvas and put here.
-ACCESS_TOKEN = "20396~GuzhH4QynaFXFXrzHX7eZ4DKDXE9MBkaP9wHPmPVcxnCLDuf8aacMPJcPKY6VWPf"
 # Canvas Course ID
 COURSE_ID = "34865"
 # ID for the "late tokens left" assignment.
