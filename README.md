@@ -2,21 +2,20 @@
 
 Generate a class photo roster PDF from a class's photos on Canvas.
 
-## Requirements 
+## Requirements
 
 1. python3 >= 3.13
 2. pdm
 
 ## Quick start
 
-```
+```sh
 $ eval $(pdm venv activate in-project)
 ```
 
 to activate the project environment.
 
-
-
+`deactivate` to exit
 
 ## Development
 
