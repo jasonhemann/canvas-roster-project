@@ -1,45 +1,99 @@
-# canvas-api-project
+# **Canvas API Project**
 
-Generate a class photo roster PDF from a class's photos on Canvas.
+This tool generates a **class photo roster PDF** using student photos from **Canvas**.
 
-## Requirements
+## **Prerequisites**
 
-1. python3 >= 3.13
-2. pdm
+1. **Python** `>=3.13`
+2. **Canvas API Token** (See [Canvas API Documentation](https://canvasapi.readthedocs.io/))
+3. **PDM** for managing dependencies
 
-## Quick start
+## **Installation & Setup**
+
+First, activate the virtual environment:
 
 ```sh
-$ eval $(pdm venv activate in-project)
+eval $(pdm venv activate in-project)
+```
+To deactivate later, run:
+```sh
+deactivate
 ```
 
-to activate the project environment.
+Install dependencies:
 
-`deactivate` to exit
-
-## Development
-
-### Dependencies
-
-Add new dependencies for development to Group 'test'
-
-```
-pdm add -dG test foo
+```sh
+pdm install
 ```
 
-List dependencies and their sub-dependency relationships
+## **Usage**
 
+### **Generate a Photo Roster PDF**
+Run the script using:
+```sh
+python -m canvas_api_project.make_photoroster --course <COURSE_ID> --output photo_roster.pdf
 ```
+
+- Replace `<COURSE_ID>` with the Canvas Course ID.
+- The generated PDF will be saved as **photo_roster.pdf**.
+
+### **Create Assignments in Canvas**
+To create assignments in a Canvas course:
+
+```sh
+python -m canvas_api_project.create_canvas_assignments --course <COURSE_ID> --config assignments.yaml
+```
+
+- **`assignments.yaml`** defines the assignments to be created.
+
+## **Testing & Code Quality**
+
+### **Run Tests**
+To run all tests:
+```sh
+pdm run pytest
+```
+To check code coverage:
+```sh
+pdm run pytest --cov=canvas_api_project
+```
+
+### **Linting & Formatting**
+Run all linting and formatting checks:
+```sh
+pdm run pre-commit run --all-files
+```
+
+This will:
+- Check formatting with `black` and `isort`
+- Lint code with `flake8`
+- Run type checks with `mypy`
+
+## **Development**
+
+### **Adding Dependencies**
+To add a runtime dependency:
+```sh
+pdm add <package>
+```
+To add a development dependency:
+```sh
+pdm add -d <package>
+```
+
+### **Useful Commands**
+List dependencies:
+```sh
 pdm list --tree
 ```
 
-### API Documentation/interaction
+Uninstall a package:
+```sh
+pdm remove <package>
+```
 
-- [Fantastic resource for getting started](getting-started)
+## **Canvas API Documentation & Resources**
+- **[Getting Started with Canvas API](https://community.canvaslms.com/t5/Canvas-Developers-Group/Canvas-APIs-Getting-started-the-practical-ins-and-outs-gotchas/ba-p/263685)**
+- **[Live API on Test Environment](https://setonhall.test.instructure.com/doc/api/live)**
+- **[Canvas API Python Library](https://canvasapi.readthedocs.io/)** (Makes API interaction much easier!)
 
-- [Live API on test environment](https://setonhall.test.instructure.com/doc/api/live)
-
-- [With this Python library, the programming becomes trivial](https://canvasapi.readthedocs.io/)
-
-
-[getting-started]: https://community.canvaslms.com/t5/Canvas-Developers-Group/Canvas-APIs-Getting-started-the-practical-ins-and-outs-gotchas/ba-p/263685
