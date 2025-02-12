@@ -27,7 +27,7 @@ repos:
         name: mypy
         stages: [commit]
         language: system
-        entry: pdm run mypy
+        entry: pdm run mypy src tests
         types: [python]
         pass_filenames: false
 

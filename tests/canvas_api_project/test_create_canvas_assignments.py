@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from src.create_canvas_assignments import (
+from canvas_api_project.create_canvas_assignments import (
     check_existing_groups,
     confirm_input,
     create_assignments,

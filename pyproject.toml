@@ -22,6 +22,7 @@ license = {text = "MIT"}
 distribution = true
 
 [tool.mypy]
+files = ["src", "tests"]
 ignore_missing_imports = true
 
 [build-system]
@@ -38,6 +39,7 @@ dev = [
     "mypy",
     "pytest",
     "pytest-cov",
+    "types-PyYAML>=6.0.12.20241230",
 ]
 test = [
     "pytest>=8.3.4",
