@@ -8,7 +8,6 @@ authors = [
 dependencies = [
     "requests>=2.32.3",
     "canvasapi>=3.2.0",
-    "logging>=0.4.9.6",
     "pyyaml>=6.0.2",
     "Pillow>=10.4.0",
     "reportlab>=4.2.5",
