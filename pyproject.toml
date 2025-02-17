@@ -12,6 +12,8 @@ dependencies = [
     "Pillow>=10.4.0",
     "reportlab>=4.2.5",
     "argparse>=1.4.0",
+    "types-requests>=2.32.0.20241016",
+    "autoflake>=2.3.1",
 ]
 requires-python = ">=3.13"
 readme = "README.md"
