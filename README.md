@@ -1,8 +1,8 @@
-# **Canvas API Project**
+# **Canvas Roster Project**
 
 This tool generates a **class photo roster PDF** using student photos from **Canvas**.
 
-## **Usage**
+## **Quick-start Guide**
 
 ### **Generate a Photo Roster PDF**
 Run the script using:
@@ -13,39 +13,124 @@ python -m canvas_api_project.make_photoroster <COURSE_ID>
 - Replace `<COURSE_ID>` with the Canvas Course ID.
 - The generated PDF will be saved as **photo_roster<COURSE_ID>.pdf**.
 
-## **Prerequisites**
+## **Installation, Setup, and Usage**
 
-1. **Python** `>=3.13`
-2. **Canvas API Token** (see [Generating a Canvas API token](#generating-a-canvas-api-token))
-3. **PDM** for managing dependencies
+This section guides the walk through of setting up prerequisites and installing and using this software itself.
 
-### **Generating a Canvas API token**
+### **Prerequisites**
 
-To generate your own API token from within your account, complete the steps in this [walk-through video](https://www.youtube.com/watch?v=cZ5cn8stjM0#t=0m30s) to create the token. Make sure to save it.
+To use this software you must obtain/install the following:
 
-For more about the API and what it offers, see the [resources section](#canvas-api-documentation-and-resources) below.
+1. A **Canvas API Token** (see [Generating a Canvas API token](#generating-and-configuring-your-canvas-api-token))
+2. **Python** `>=3.9` for installing `pdm`
+3. [`pdm`](https://pdm-project.org/en/latest/#installation) for managing versions and dependencies
 
-## **Installation & Setup**
+We walk through this first step in detail.
 
-First, activate the virtual environment:
+### **Generating and Configuring Your Canvas API Token**
 
+1. **Generate Your API Token:**
+   Follow the [walk-through video](https://www.youtube.com/watch?v=cZ5cn8stjM0#t=0m30s) to generate your Canvas API token. Once generated, copy your token securely.
+
+2. **Make the API Token Available:**
+
+   One way to accomplish this is to set in the terminal session:
+
+   - **Unix-like Systems (Linux/macOS):**
+     ```sh
+     export CANVAS_API_KEY=your_token_here
+     ```
+
+   - **Windows (PowerShell):**
+     ```powershell
+     $env:CANVAS_API_KEY = "your_token_here"
+     ```
+
+   > **Security Note:** Better practice is to store the key in an environment file. Ensure that you do not hardcode this key in your source code or commit it to version control.
+
+3. **Verify the Configuration:**
+   You can verify that the environment variable is set by running:
+
+   - **Unix-like Systems:**
+     ```sh
+     echo $CANVAS_API_KEY
+     ```
+   - **Windows (PowerShell):**
+     ```powershell
+     echo $env:CANVAS_API_KEY
+     ```
+
+## **Usage**
+
+Follow the instructions below based on your operating system.
+
+### Unix-like Systems (Linux/macOS)
+
+1. **Activate the Virtual Environment:**
+
+   Run the following command in your terminal:
+
+   ```sh
+   eval $(pdm venv activate in-project)
+   ```
+
+2. **Install Dependencies:**
+
+   Once the virtual environment is active, install the dependencies:
+
+   ```sh
+   pdm install
+   ```
+
+3. **Deactivate the Virtual Environment:**
+
+   When you’re finished, exit the virtual environment by running:
+
+   ```sh
+   deactivate
+   ```
+
+### Windows (PowerShell)
+
+1. **Activate the Virtual Environment:**
+
+   In your PowerShell prompt, use the following command (including the prompt text as shown):
+
+   ```powershell
+   PS1> Invoke-Expression (pdm venv activate for-test)
+   ```
+
+2. **Install Dependencies:**
+
+   After activation, install the dependencies:
+
+   ```powershell
+   pdm install
+   ```
+
+3. **Deactivate the Virtual Environment:**
+
+   When finished, deactivate the environment by running:
+
+   ```powershell
+   deactivate
+   ```
+
+> **Note:** The `PS1>` shown in the Windows command is the prompt indicator; you should not type it as part of the command.
+
+### **Generate a Photo Roster PDF**
+
+Once inside the project, you can run the script using:
 ```sh
-eval $(pdm venv activate in-project)
-```
-To deactivate later, run:
-```sh
-deactivate
+python -m canvas_api_project.make_photoroster <COURSE_ID>
 ```
 
-Install dependencies:
+- Replace `<COURSE_ID>` with the Canvas Course ID.
+- The generated PDF will be saved as **photo_roster<COURSE_ID>.pdf**.
 
-```sh
-pdm install
-```
+## **Development Notes**
 
-## **Development**
-
-We use `pdm` for version and dependency management.
+We use `pdm` for all version and dependency management. The following instructions are written assuming a Unix-like environment.
 
 ### **Adding Dependencies**
 To add a runtime dependency:
