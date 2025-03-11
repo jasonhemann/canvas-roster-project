@@ -1,55 +1,66 @@
-# **Canvas Roster Project**
+# Canvas Roster Project
 
-This tool generates a **class photo roster PDF** using student photos from **Canvas**.
+Canvas Roster Project generates a **class photo roster PDF** using student photos fetched from Canvas.
 
-## **Quick-start Guide**
+## Table of Contents
 
-### **Generate a Photo Roster PDF**
-Run the script using:
+- [Quick Start](#quick-start)
+- [Installation and Setup](#installation-and-setup)
+  - [Prerequisites](#prerequisites)
+  - [Generating and Configuring Your Canvas API Token](#generating-and-configuring-your-canvas-api-token)
+  - [Virtual Environment Setup](#virtual-environment-setup)
+- [Usage](#usage)
+- [Development Notes](#development-notes)
+- [Canvas API Documentation and Resources](#canvas-api-documentation-and-resources)
+
+---
+
+## Quick Start
+
+Generate a photo roster PDF by running the following command, replacing `<COURSE_ID>` with your Canvas course identifier:
+
 ```sh
 python -m canvas_api_project.make_photoroster <COURSE_ID>
 ```
 
-- Replace `<COURSE_ID>` with the Canvas Course ID.
-- The generated PDF will be saved as **photo_roster<COURSE_ID>.pdf**.
+The resulting PDF will be saved as `photo_roster<COURSE_ID>.pdf`.
 
-## **Installation, Setup, and Usage**
+---
 
-This section guides the walk through of setting up prerequisites and installing and using this software itself.
+## Installation and Setup
 
-### **Prerequisites**
+This section covers the prerequisites, API token setup, and environment configuration.
 
-To use this software you must obtain/install the following:
+### Prerequisites
 
-1. A **Canvas API Token** (see [Generating a Canvas API token](#generating-and-configuring-your-canvas-api-token))
-2. **Python** `>=3.9` for installing `pdm`
-3. [`pdm`](https://pdm-project.org/en/latest/#installation) for managing versions and dependencies
+Before using this project, ensure you have:
 
-We walk through this first step in detail.
+1. **A Canvas API Token** – See [Generating and Configuring Your Canvas API Token](#generating-and-configuring-your-canvas-api-token) for details.
+2. **Python 3.9 or higher** – Required for installing and running `pdm`.
+3. **pdm** – Used for managing project dependencies and versions. Installation instructions are available on the [pdm website](https://pdm-project.org/en/latest/#installation).
 
-### **Generating and Configuring Your Canvas API Token**
+### Generating and Configuring Your Canvas API Token
 
 1. **Generate Your API Token:**
-   Follow the [walk-through video](https://www.youtube.com/watch?v=cZ5cn8stjM0#t=0m30s) to generate your Canvas API token. Once generated, copy your token securely.
+
+   Follow the [walk-through video](https://www.youtube.com/watch?v=cZ5cn8stjM0#t=0m30s) to generate your Canvas API token. Once generated, securely copy your token.
 
 2. **Make the API Token Available:**
 
-   One way to accomplish this is to set in the terminal session:
+   Set the token as an environment variable:
 
    - **Unix-like Systems (Linux/macOS):**
      ```sh
      export CANVAS_API_KEY=your_token_here
      ```
-
    - **Windows (PowerShell):**
      ```powershell
      $env:CANVAS_API_KEY = "your_token_here"
      ```
 
-   > **Security Note:** Better practice is to store the key in an environment file. Ensure that you do not hardcode this key in your source code or commit it to version control.
+   > **Security Note:** Avoid hardcoding your API token in your source code or committing it to version control. For better security, consider using an environment file.
 
 3. **Verify the Configuration:**
-   You can verify that the environment variable is set by running:
 
    - **Unix-like Systems:**
      ```sh
@@ -60,124 +71,107 @@ We walk through this first step in detail.
      echo $env:CANVAS_API_KEY
      ```
 
-## **Usage**
+### Virtual Environment Setup
 
 Follow the instructions below based on your operating system.
 
-### Unix-like Systems (Linux/macOS)
+#### Unix-like Systems (Linux/macOS)
 
 1. **Activate the Virtual Environment:**
-
-   Run the following command in your terminal:
-
    ```sh
    eval $(pdm venv activate in-project)
    ```
-
 2. **Install Dependencies:**
-
-   Once the virtual environment is active, install the dependencies:
-
    ```sh
    pdm install
    ```
-
 3. **Deactivate the Virtual Environment:**
-
-   When you’re finished, exit the virtual environment by running:
-
    ```sh
    deactivate
    ```
 
-### Windows (PowerShell)
+#### Windows (PowerShell)
 
 1. **Activate the Virtual Environment:**
 
-   In your PowerShell prompt, use the following command (including the prompt text as shown):
-
+   In your PowerShell prompt, run:
    ```powershell
    PS1> Invoke-Expression (pdm venv activate for-test)
    ```
-
+   > **Note:** The `PS1>` is the prompt indicator and should not be typed as part of the command.
 2. **Install Dependencies:**
-
-   After activation, install the dependencies:
-
    ```powershell
    pdm install
    ```
-
 3. **Deactivate the Virtual Environment:**
-
-   When finished, deactivate the environment by running:
-
    ```powershell
    deactivate
    ```
 
-> **Note:** The `PS1>` shown in the Windows command is the prompt indicator; you should not type it as part of the command.
+---
 
-### **Generate a Photo Roster PDF**
+## Usage
 
-Once inside the project, you can run the script using:
+After setting up the environment, generate the photo roster PDF with:
+
 ```sh
 python -m canvas_api_project.make_photoroster <COURSE_ID>
 ```
 
-- Replace `<COURSE_ID>` with the Canvas Course ID.
-- The generated PDF will be saved as **photo_roster<COURSE_ID>.pdf**.
+Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be saved as `photo_roster<COURSE_ID>.pdf`.
 
-## **Development Notes**
+---
 
-We use `pdm` for all version and dependency management. The following instructions are written assuming a Unix-like environment.
+## Development Notes
 
-### **Adding Dependencies**
-To add a runtime dependency:
-```sh
-pdm add <package>
-```
-To add a development dependency:
-```sh
-pdm add -d <package>
-```
+We use `pdm` for dependency and version management. The following commands assume a Unix-like environment unless otherwise noted.
 
-### **Useful Commands**
-List dependencies:
-```sh
-pdm list --tree
-```
+### Managing Dependencies
 
-Uninstall a package:
-```sh
-pdm remove <package>
-```
+- **Add a runtime dependency:**
+  ```sh
+  pdm add <package>
+  ```
+- **Add a development dependency:**
+  ```sh
+  pdm add -d <package>
+  ```
+- **List installed dependencies:**
+  ```sh
+  pdm list --tree
+  ```
+- **Remove a dependency:**
+  ```sh
+  pdm remove <package>
+  ```
 
-### **Testing & Code Quality**
+### Testing and Code Quality
 
-### **Run Tests**
-To run all tests:
-```sh
-pdm run pytest
-```
-To check code coverage:
-```sh
-pdm run pytest --cov=canvas_api_project
-```
+- **Run Tests:**
+  ```sh
+  pdm run pytest
+  ```
+- **Check Code Coverage:**
+  ```sh
+  pdm run pytest --cov=canvas_api_project
+  ```
+- **Linting and Formatting:**
+  Run all checks with:
+  ```sh
+  pdm run pre-commit run --all-files
+  ```
+  This command:
+  - Formats code with `black` and `isort`
+  - Lints code with `flake8`
+  - Runs type checks with `mypy`
 
-### **Linting & Formatting**
-Run all linting and formatting checks:
-```sh
-pdm run pre-commit run --all-files
-```
+---
 
-This will:
-- Check formatting with `black` and `isort`
-- Lint code with `flake8`
-- Run type checks with `mypy`
+## Canvas API Documentation and Resources
 
-## **Canvas API Documentation and Resources**
 - **[Getting Started with Canvas API](https://community.canvaslms.com/t5/Canvas-Developers-Group/Canvas-APIs-Getting-started-the-practical-ins-and-outs-gotchas/ba-p/263685)**
 - **[Live API on Test Environment](https://setonhall.test.instructure.com/doc/api/live)**
-- **[Canvas API Python Library](https://canvasapi.readthedocs.io/)** (Makes API interaction much easier!)
+- **[Canvas API Python Library](https://canvasapi.readthedocs.io/)** – Simplifies API interactions
+
+
 
