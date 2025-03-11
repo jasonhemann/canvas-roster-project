@@ -1,6 +1,6 @@
 import sys
 
-from canvas_api_project.cli import main
+from canvas_roster_project.cli import main
 
 if __name__ == "__main__":
     main()

@@ -20,7 +20,7 @@ Canvas Roster Project generates a **class photo roster PDF** using student photo
 Generate a photo roster PDF by running the following command, replacing `<COURSE_ID>` with your Canvas course identifier:
 
 ```sh
-python -m canvas_api_project.make_photoroster <COURSE_ID>
+python -m canvas_roster_project.make_photoroster <COURSE_ID>
 ```
 
 The resulting PDF will be saved as `photo_roster<COURSE_ID>.pdf`.
@@ -115,7 +115,7 @@ Follow the instructions below based on your operating system.
 After setting up the environment, generate the photo roster PDF with:
 
 ```sh
-python -m canvas_api_project.make_photoroster <COURSE_ID>
+python -m canvas_roster_project.make_photoroster <COURSE_ID>
 ```
 
 Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be saved as `photo_roster<COURSE_ID>.pdf`.
@@ -153,7 +153,7 @@ We use `pdm` for dependency and version management. The following commands assum
   ```
 - **Check Code Coverage:**
   ```sh
-  pdm run pytest --cov=canvas_api_project
+  pdm run pytest --cov=canvas_roster_project
   ```
 - **Linting and Formatting:**
   Run all checks with:
@@ -171,7 +171,7 @@ We use `pdm` for dependency and version management. The following commands assum
 
 - **[Getting Started with Canvas API](https://community.canvaslms.com/t5/Canvas-Developers-Group/Canvas-APIs-Getting-started-the-practical-ins-and-outs-gotchas/ba-p/263685)**
 - **[Live API on Test Environment](https://setonhall.test.instructure.com/doc/api/live)**
-- **[Canvas API Python Library](https://canvasapi.readthedocs.io/)** – Simplifies API interactions
+- **[Canvas API Python Library](https://canvasapi.readthedocs.io/)** -- Simplifies API interactions
 
 
 
