@@ -20,7 +20,7 @@ Canvas Roster Project generates a **class photo roster PDF** using student photo
 Generate a photo roster PDF by running the following command, replacing `<COURSE_ID>` with your Canvas course identifier:
 
 ```sh
-python -m canvas_roster_project.make_photoroster <COURSE_ID>
+python src/canvas_roster_project.make_photoroster.py <COURSE_ID>
 ```
 
 The resulting PDF will be saved as `photo_roster<COURSE_ID>.pdf`.
@@ -77,15 +77,21 @@ Follow the instructions below based on your operating system.
 
 #### Unix-like Systems (Linux/macOS)
 
-1. **Activate the Virtual Environment:**
+1. **Create and Activate the Virtual Environment:**
    ```sh
+   pdm venv create
    eval $(pdm venv activate in-project)
    ```
 2. **Install Dependencies:**
    ```sh
    pdm install
    ```
-3. **Deactivate the Virtual Environment:**
+3. **Execute Script:**
+   ```sh
+   python src/canvas_roster_project.make_photoroster.py <COURSE_ID>
+   ```
+Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be saved as `photo_roster<COURSE_ID>.pdf`.
+4. **Deactivate the Virtual Environment:**
    ```sh
    deactivate
    ```
@@ -101,24 +107,17 @@ Follow the instructions below based on your operating system.
    > **Note:** The `PS1>` is the prompt indicator and should not be typed as part of the command.
 2. **Install Dependencies:**
    ```powershell
-   pdm install
+   PS1> pdm install
    ```
-3. **Deactivate the Virtual Environment:**
-   ```powershell
-   deactivate
+3. **Execute Script:**
+   ```sh
+   PS1> python src/canvas_roster_project.make_photoroster.py <COURSE_ID>
    ```
-
----
-
-## Usage
-
-After setting up the environment, generate the photo roster PDF with:
-
-```sh
-python -m canvas_roster_project.make_photoroster <COURSE_ID>
-```
-
 Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be saved as `photo_roster<COURSE_ID>.pdf`.
+4. **Deactivate the Virtual Environment:**
+   ```powershell
+   PS1> deactivate
+   ```
 
 ---
 
