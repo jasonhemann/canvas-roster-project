@@ -20,10 +20,15 @@ Canvas Roster Project generates a **class photo roster PDF** using student photo
 Generate a photo roster PDF by running the following command, replacing `<COURSE_ID>` with your Canvas course identifier:
 
 ```sh
-python src/canvas_roster_project.make_photoroster.py <COURSE_ID>
+pdm run python -m canvas_roster_project.make_photoroster <COURSE_ID>
+```
+(Or alternatively, if you are in an activated venv)
+
+```sh
+python -m canvas_roster_project.make_photoroster <COURSE_ID>
 ```
 
-The resulting PDF will be saved as `photo_roster<COURSE_ID>.pdf`.
+The resulting PDF will be saved as `photo_roster_<COURSE_ID>.pdf`.
 
 ---
 
