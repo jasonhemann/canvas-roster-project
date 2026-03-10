@@ -20,7 +20,7 @@ Canvas Roster Project generates a **class photo roster PDF** using student photo
 Generate a photo roster PDF by running the following command, replacing `<COURSE_ID>` with your Canvas course identifier:
 
 ```sh
-pdm run python -m canvas_roster_project.make_photoroster <COURSE_ID>
+uv run python -m canvas_roster_project.make_photoroster <COURSE_ID>
 ```
 (Or alternatively, if you are in an activated venv)
 
@@ -41,8 +41,8 @@ This section covers the prerequisites, API token setup, and environment configur
 Before using this project, ensure you have:
 
 1. **A Canvas API Token** – See [Generating and Configuring Your Canvas API Token](#generating-and-configuring-your-canvas-api-token) for details.
-2. **Python 3.9 or higher** – Required for installing and running `pdm`.
-3. **pdm** – Used for managing project dependencies and versions. Installation instructions are available on the [pdm website](https://pdm-project.org/en/latest/#installation).
+2. **Python 3.9 or higher** – Required for installing and running `uv`.
+3. **uv** – Used for managing project dependencies and versions. Installation instructions are available on the [uv website](https://docs.astral.sh/uv/).
 
 ### Generating and Configuring Your Canvas API Token
 
@@ -84,12 +84,12 @@ Follow the instructions below based on your operating system.
 
 1. **Create and Activate the Virtual Environment:**
    ```sh
-   pdm venv create
-   eval $(pdm venv activate in-project)
+   uv sync --group dev
+   source .venv/bin/activate
    ```
 2. **Install Dependencies:**
    ```sh
-   pdm install
+   uv sync --group dev
    ```
 3. **Execute Script:**
    ```sh
@@ -107,12 +107,12 @@ Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be s
 
    In your PowerShell prompt, run:
    ```powershell
-   PS1> Invoke-Expression (pdm venv activate for-test)
+   PS1> .\.venv\Scripts\Activate.ps1
    ```
    > **Note:** The `PS1>` is the prompt indicator and should not be typed as part of the command.
 2. **Install Dependencies:**
    ```powershell
-   PS1> pdm install
+   PS1> uv sync --group dev
    ```
 3. **Execute Script:**
    ```sh
@@ -128,41 +128,41 @@ Replace `<COURSE_ID>` with the actual Canvas Course ID. The PDF output will be s
 
 ## Development Notes
 
-We use `pdm` for dependency and version management. The following commands assume a Unix-like environment unless otherwise noted.
+We use `uv` for dependency and version management. The following commands assume a Unix-like environment unless otherwise noted.
 
 ### Managing Dependencies
 
 - **Add a runtime dependency:**
   ```sh
-  pdm add <package>
+  uv add <package>
   ```
 - **Add a development dependency:**
   ```sh
-  pdm add -d <package>
+  uv add --group dev <package>
   ```
 - **List installed dependencies:**
   ```sh
-  pdm list --tree
+  uv tree
   ```
 - **Remove a dependency:**
   ```sh
-  pdm remove <package>
+  uv remove <package>
   ```
 
 ### Testing and Code Quality
 
 - **Run Tests:**
   ```sh
-  pdm run pytest
+  uv run pytest
   ```
 - **Check Code Coverage:**
   ```sh
-  pdm run pytest --cov=canvas_roster_project
+  uv run pytest --cov=canvas_roster_project
   ```
 - **Linting and Formatting:**
   Run all checks with:
   ```sh
-  pdm run pre-commit run --all-files
+  uv run pre-commit run --all-files
   ```
   This command:
   - Formats code with `black` and `isort`
