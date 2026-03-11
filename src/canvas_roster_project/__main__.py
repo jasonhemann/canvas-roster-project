@@ -1,6 +1,4 @@
-import sys
-
-from canvas_roster_project.cli import main
+import runpy
 
 if __name__ == "__main__":
-    main()
+    runpy.run_module("canvas_roster_project.make_photoroster", run_name="__main__")
