@@ -42,7 +42,7 @@ exclude_lines = [
     "raise NotImplementedError",
 ]
 [tool.ruff]
-line-length = 100
+line-length = 88
 target-version = "py313"
 
 [tool.ruff.lint]

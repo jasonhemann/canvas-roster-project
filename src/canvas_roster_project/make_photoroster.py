@@ -54,7 +54,9 @@ class _CanvasClient(Protocol):
 
 def parse_args(argv: list[str] | None = None) -> CliArgs:
     """Parse CLI arguments for roster generation."""
-    parser = argparse.ArgumentParser(description="Generate a photo roster for a Canvas course.")
+    parser = argparse.ArgumentParser(
+        description="Generate a photo roster for a Canvas course."
+    )
     _ = parser.add_argument(
         "course_id",
         type=int,
