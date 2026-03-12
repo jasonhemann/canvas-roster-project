@@ -1,28 +1,21 @@
 [project]
 name = "canvas-api-project"
 version = "0.1.0"
-description = "Default template for PDM package"
-authors = [
-    {name = "Jason Hemann", email = "jason.hemann@gmail.com"},
-]
+description = "Generate Canvas course photo rosters"
+authors = [{ name = "Jason Hemann", email = "jason.hemann@gmail.com" }]
 dependencies = [
     "requests>=2.32.3",
     "canvasapi>=3.2.0",
     "pyyaml>=6.0.2",
     "Pillow>=10.4.0",
     "reportlab>=4.2.5",
-    "argparse>=1.4.0",
-    "types-requests>=2.32.0.20241016",
-    "autoflake>=2.3.1",
 ]
 requires-python = ">=3.13"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
-
-[tool.mypy]
-files = ["src", "tests"]
-ignore_missing_imports = true
+[project.scripts]
+canvas-roster = "canvas_roster_project.make_photoroster:main"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
@@ -34,34 +27,69 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-q --cov=src/canvas_roster_project --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["src/canvas_roster_project"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == '__main__':",
+    "raise NotImplementedError",
+]
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "C90", "SIM", "RET", "N", "Q", "RUF", "PT", "D"]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D107",
+    "D203",
+    "D205",
+    "D213",
+    "E203",
+    "E266",
+    "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 18
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.basedpyright]
+include = ["src", "tests"]
+typeCheckingMode = "recommended"
+reportMissingTypeStubs = "none"
+venvPath = "."
+venv = ".venv"
+
 [dependency-groups]
 dev = [
-    "pytest-mock",
-    "black",
-    "isort",
-    "flake8>=7.1.2",
-    "flake8-pyproject",
-    "mypy",
-    "pytest",
-    "pytest-cov",
+    "basedpyright>=1.31.3",
+    "pre-commit>=4.3.0",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.14.1",
+    "ruff>=0.13.1",
     "types-PyYAML>=6.0.12.20241230",
-    "flake8-bugbear>=24.12.12",
-    "flake8-comprehensions>=3.16.0",
-    "flake8-return>=1.2.0",
-    "flake8-quotes>=3.4.0",
-    "flake8-simplify>=0.21.0",
-    "pep8-naming>=0.14.1",
-    "flake8-docstrings>=1.7.0",
-    "memray>=1.15.0",
+    "types-requests>=2.32.0.20241016",
 ]
 test = [
-    "pytest>=8.3.4",
     "hypothesis>=6.111.1",
-    "black>=25.1.0",
-    "isort>=6.0.0",
-    "flake8>=7.1.1",
-    "flake8-pyproject>=1.2.3",
-    "mypy>=1.15.0",
-    "pytest-cov>=6.0.0",
-    "pytest-mock>=3.14.0",
 ]
