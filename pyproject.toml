@@ -7,7 +7,7 @@ dependencies = [
     "requests>=2.32.3",
     "canvasapi>=3.2.0",
     "pyyaml>=6.0.2",
-    "Pillow>=10.4.0",
+    "Pillow>=12.3.0",
     "reportlab>=4.2.5",
 ]
 requires-python = ">=3.13"
